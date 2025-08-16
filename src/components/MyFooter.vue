@@ -28,14 +28,16 @@
 					<!-- <a href="javascript:;" target="_blank">个人主页</a> -->
                               <router-link to="/about">个人主页</router-link>
 				</li>
+				<!-- TODO -->
 				<li>
-					<a href="http://admin.zylwin.cn" target="_blank">后台管理系统</a>
+					<a href="" target="_blank">后台管理系统</a>
 				</li>
 			</ul>
 		</div>
-		<div class="text-center border-t dark:border-t-slate-800 p-5 animated-gradient text-white">
-			<a href="https://beian.miit.gov.cn/" target="_blank" class="hover:text-blue-400">Copyright ©2024 by@zylwin All rights reserved | 蜀ICP备2024048164号-1</a>
-		</div>
+		<!-- TODO -->
+		<!-- <div class="text-center border-t dark:border-t-slate-800 p-5 animated-gradient text-white">
+			<a href="https://beian.miit.gov.cn/" target="_blank" class="hover:text-blue-400">Copyright ©2024 by@techtron All rights reserved | 蜀ICP备2024048164号-1</a>
+		</div> -->
 	</div>
 </template>
 

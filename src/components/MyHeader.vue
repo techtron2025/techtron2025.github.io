@@ -76,7 +76,7 @@ onMounted(() => {
 	userStore.setTheme(isTheme.value);
 	initTheme();
 
-	getClassifyList();
+	// getClassifyList();
 	window.addEventListener('scroll', throttle(scroll, 100));
 });
 

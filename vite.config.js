@@ -14,7 +14,6 @@ export default defineConfig(({ command, mode }) => {
 	// 获取自定义环境变量
 	const env = loadEnv(mode, process.cwd());
 	console.log(env);
-	
 
 	return {
 		plugins: [
@@ -36,7 +35,7 @@ export default defineConfig(({ command, mode }) => {
 				symbolId: 'icon-[dir]-[name]'
 			}),
 			prismjs({
-				languages: ['json','css','javascript','bash','docker','http']
+				languages: ['json', 'css', 'javascript', 'bash', 'docker', 'http']
 			}),
 			compression({
 				verbose: true, // 输出压缩日志
@@ -50,6 +49,13 @@ export default defineConfig(({ command, mode }) => {
 			extensions: ['.js', '.json', '.vue'],
 			alias: {
 				'@': fileURLToPath(new URL('./src', import.meta.url))
+			}
+		},
+		css: {
+			preprocessorOptions: {
+				scss: {
+					silenceDeprecations: ['legacy-js-api']
+				}
 			}
 		},
 		// scss全局变量配置 全局变量配置在/variable.scss
@@ -66,9 +72,9 @@ export default defineConfig(({ command, mode }) => {
 						});
 					}
 				},
-				'/zyl/': {
+				'/neal/': {
 					target: 'ws://localhost:3000/',
-                              changeOrigin: true,
+					changeOrigin: true,
 					ws: true
 				},
 				'/uploads': env.VITE_URL

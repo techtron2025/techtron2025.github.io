@@ -8,6 +8,7 @@ axios.interceptors.request.use(
 		globConfig.show.value = true;
 		//获取token
 		config.headers.token = getStore('client_token') || '';
+		config.baseURL = import.meta.env.VITE_URL + '/api';
 		return config;
 	},
 	function (error) {
@@ -29,7 +30,7 @@ axios.interceptors.response.use(
 			return response;
 		}
 
-		if (response.data.code !== 1) {
+		if (response.data.code !== 0) {
 			errorDeal(response.data);
 
 			return Promise.reject(response);

@@ -17,27 +17,24 @@
 			>
 				<div class="relative mt-[150px] w-full bg-slate-100 dark:bg-slate-800 flex flex-col items-center">
 					<div class="absolute left-1/2 -translate-x-1/2 tr -top-12 size-24 rounded-full cursor-pointer shadow-md overflow-hidden">
-						<img src="../../assets/imgs/avatar.png" class="hover:scale-125 duration-300" />
+						<img src="../../assets/imgs/avatar.jpg" class="hover:scale-125 duration-300" />
 					</div>
 					<div class="h-12"></div>
-					<p class="py-3 text-2xl dark:text-white">zylwin</p>
+					<p class="py-3 text-2xl dark:text-white">techtron</p>
 					<p class="py-3 text-zinc-500 dark:text-white">路虽远，行则将至。</p>
 					<div class="border-t border-zinc-300 dark:border-slate-800 w-full mt-8 flex flex-col items-center">
 						<div class="-mt-3 w-28 h-6 text-center dark:bg-slate-800 bg-slate-100 dark:text-white">社交账号</div>
 
 						<div class="flex space-x-4 mt-5 pb-4 cursor-pointer">
-							<a href="https://github.com/DL710" target="_blank">
+							<a href="https://github.com/techtron2025" target="_blank">
 								<img class="w-5 h-5" src="../../assets/imgs/github.svg" alt="" />
 							</a>
-							<a href="https://gitee.com/zylwin" target="_blank">
+							<!-- <a href="" target="_blank">
 								<img class="w-5 h-5" src="../../assets/imgs/Gitee.svg" alt="" />
-							</a>
-							<a href="https://juejin.cn/" target="_blank">
+							</a> -->
+							<!-- <a href="https://juejin.cn/" target="_blank">
 								<img class="w-5 h-5" src="../../assets/imgs/Juejin.svg" alt="" />
-							</a>
-							<a href="https://www.csdn.net/" target="_blank">
-								<img class="w-5 h-5" src="../../assets/imgs/CSDN.svg" alt="" />
-							</a>
+							</a> -->
 						</div>
 					</div>
 				</div>
@@ -87,10 +84,10 @@ onMounted(() => {
 		lable.value = $route.query.lableName;
 	}
 	getList();
-	visitorAdd();
-	getLifeList();
-	settingList();
-	getAlbumList();
+	// visitorAdd();
+	// getLifeList();
+	// settingList();
+	// getAlbumList();
 });
 
 // 首页全部文章·
@@ -113,11 +110,11 @@ function getList() {
 		keywords: keywords.value,
 		lable: lable.value,
 		type: 0, //全部
-		pageNum: pageNum.value,
+		current: pageNum.value,
 		pageSize: pageSize.value
 	};
 	api.articleList(json).then((res) => {
-		list.value = res.data.data;
+		list.value = res.data.records;
 		total.value = res.data.total;
 		window.scrollTo(0, 0);
 	});

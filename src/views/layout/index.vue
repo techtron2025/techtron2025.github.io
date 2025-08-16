@@ -38,9 +38,9 @@ const isbigMain = computed(() => {
 
 const aplayerRef = ref(null);
 onMounted(() => {
-	api.musicList().then((res) => {
-		aplayerRef.value.addList(res.data);
-	});
+	// api.musicList().then((res) => {
+	// 	aplayerRef.value.addList(res.data);
+	// });
 });
 
 // 通信

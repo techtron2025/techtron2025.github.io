@@ -62,12 +62,12 @@
 
 			<div>
 				<div>个人网站：</div>
-				<input type="text" v-model="form.website" placeholder="例：zylwin.cn" class="flex-1 mt-2 border border-slate-300 dark:bg-slate-600 h-10 w-full outline-none pl-3 rounded-sm" />
+				<input type="text" v-model="form.website" placeholder="" class="flex-1 mt-2 border border-slate-300 dark:bg-slate-600 h-10 w-full outline-none pl-3 rounded-sm" />
 			</div>
 
 			<div>
 				<div>微信号：</div>
-				<input type="text" v-model="form.weixin" placeholder="例：zhao550001" class="flex-1 mt-2 border border-slate-300 dark:bg-slate-600 h-10 w-full outline-none pl-3 rounded-sm" />
+				<input type="text" v-model="form.weixin" placeholder="" class="flex-1 mt-2 border border-slate-300 dark:bg-slate-600 h-10 w-full outline-none pl-3 rounded-sm" />
 			</div>
 
 			<button class="btn-purple w-full h-[40px]">修 改</button>

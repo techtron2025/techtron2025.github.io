@@ -2,7 +2,7 @@ import _http from '@/utils/http';
 
 export default {
 	articleList(params, loading, headers) {
-		return _http('post', { url: '/api/client/article/list', apiName: '文章列表' }, params, loading, headers);
+		return _http('post', { url: '/blog/list', apiName: '文章列表' }, params, loading, headers);
 	},
 	visitorAdd(params, loading, headers) {
 		return _http('post', { url: '/api/client/visitor/addVisitor', apiName: '新增访客' }, params, loading, headers);

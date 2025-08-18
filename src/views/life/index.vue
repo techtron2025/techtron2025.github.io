@@ -46,12 +46,11 @@
 					</div>
 
 					<div>{{ item.content }}</div>
-					<!-- TODO -->
-					<!-- <div class="flex items-center space-x-2 mt-4 cursor-pointer">
-						<div class="px-2 rounded-md border border-slate-500 text-sm hover:border-blue-600 font-normal hover:text-blue-600" v-for="(p, i) in item.labelNames.split(',')" :key="i">
+					<div class="flex items-center space-x-2 mt-4 cursor-pointer">
+						<div class="px-2 rounded-md border border-slate-500 text-sm hover:border-blue-600 font-normal hover:text-blue-600" v-for="(p, i) in JSON.parse(item.tags)" :key="i">
 							<span>{{ p }}</span>
 						</div>
-					</div> -->
+					</div>
 				</div>
 			</div>
 		</div>

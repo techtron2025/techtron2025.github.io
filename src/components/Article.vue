@@ -36,19 +36,18 @@
 				</div>
 			</div>
 			<!-- 摘要 -->
-			<p class="min-h-20 line-clamp-3 leading-7 text-[#cecece] text-sm indent-[2em]">{{ p.abstract }}</p>
+			<p class="min-h-20 line-clamp-3 leading-7 text-[#cecece] text-sm indent-[2em]">{{ p.blogAbstract }}</p>
 			<!-- 标签 -->
 			<div class="flex justify-between items-center mt-4 text-sm px-5">
 				<div class="flex items-center space-x-2 cursor-pointer">
-					<!-- TODO -->
-					<!-- <span
+					<span
 						@click.prevent.stop="lableSearchHandle(p)"
 						class="px-2 rounded-md border hover:border-blue-500 font-normal hover:text-blue-500"
-						v-for="(p, i) in p.labelNames.split(',')"
+						v-for="(p, i) in JSON.parse(p.tags)"
 						:key="i"
 					>
 						{{ p }}
-					</span> -->
+					</span>
 				</div>
 				<div class="flex items-center space-x-2 text-sm">
 					<svg-icon class="rounded-full p-1 text-white bg-orange-500 w-5 h-5" name="time"></svg-icon>

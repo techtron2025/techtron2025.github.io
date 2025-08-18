@@ -25,12 +25,10 @@
 			</ul>
 			<ul>
 				<li>
-					<!-- <a href="javascript:;" target="_blank">个人主页</a> -->
-                              <router-link to="/about">个人主页</router-link>
+          <router-link to="/about">个人主页</router-link>
 				</li>
-				<!-- TODO -->
 				<li>
-					<a href="" target="_blank">后台管理系统</a>
+					<a href="https://techtron2025.github.io/blog-admin" target="_blank">后台管理系统</a>
 				</li>
 			</ul>
 		</div>

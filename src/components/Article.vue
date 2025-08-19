@@ -9,7 +9,7 @@
 		<!-- 图片 -->
 		<div
 			class="min-w-[45%] hidden sm:block relative z-10 scale-100 hover:scale-125 duration-300 bg-cover bg-no-repeat bg-center"
-			:style="{ backgroundImage: `url(${p.fullUrl})`, clipPath: i % 2 ? ' polygon(0 0, 100% 0, 90% 100%, 0 100%) ' : 'polygon(10% 0px, 100% 0px, 100% 100%, 0px 100%)' }"
+			:style="{ backgroundImage: `url(${p.url})`, clipPath: i % 2 ? ' polygon(0 0, 100% 0, 90% 100%, 0 100%) ' : 'polygon(10% 0px, 100% 0px, 100% 100%, 0px 100%)' }"
 		></div>
 
 		<!-- 文本 -->
@@ -56,7 +56,7 @@
 			</div>
 		</div>
 
-		<div class="absolute w-full h-full bg-no-repeat bg-center bg-cover" :style="{ backgroundImage: `url(${p.fullUrl})`, filter: 'blur(2.5rem) brightness(0.6)' }"></div>
+		<div class="absolute w-full h-full bg-no-repeat bg-center bg-cover" :style="{ backgroundImage: `url(${p.url})`, filter: 'blur(2.5rem) brightness(0.6)' }"></div>
 	</div>
 </template>
 

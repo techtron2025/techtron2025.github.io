@@ -152,7 +152,8 @@ onBeforeUnmount(() => {
 });
 
 let bannerText = ref('');
-const bannerImg = ref('');
+const bannerImg = ref('https://techtron-1304230447.cos.ap-shanghai.myqcloud.com/blog/banner.png');
+printText('遇事不决，可问春风。春风不语，既随本心。')
 const settingList = () => {
 	api.settingList({ id: 1 }).then((res) => {
 		bannerImg.value = res.data.fullUrl;

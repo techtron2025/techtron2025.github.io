@@ -1,7 +1,7 @@
 <template>
 	<div class="border-t dark:border-t-slate-500 text-black dark:text-white mt-5">
 		<div class="xl:w-[1200px] lg:w-[960px] mx-auto  flex justify-between leading-9 py-4 px-4">
-			<ul>
+			<!-- <ul>
 				<li>
 					<a href="https://www.cnblogs.com" target="_blank">博客园</a>
 				</li>
@@ -30,12 +30,8 @@
 				<li>
 					<a href="https://techtron2025.github.io/blog-admin" target="_blank">后台管理系统</a>
 				</li>
-			</ul>
+			</ul> -->
 		</div>
-		<!-- TODO -->
-		<!-- <div class="text-center border-t dark:border-t-slate-800 p-5 animated-gradient text-white">
-			<a href="https://beian.miit.gov.cn/" target="_blank" class="hover:text-blue-400">Copyright ©2024 by@techtron All rights reserved | 蜀ICP备2024048164号-1</a>
-		</div> -->
 	</div>
 </template>
 

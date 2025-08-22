@@ -16,7 +16,7 @@
 		<div class="w-full py-5 px-3 sm:px-5 relative z-10 cursor-pointer">
 			<h3 class="overflow-hidden text-center font-bold line-clamp-1 hover:text-blue-400">{{ p.title }}</h3>
 			<div class="flex justify-end items-center text-sm py-1 space-x-5 mt-1">
-				<div class="flex items-center space-x-2">
+				<!-- <div class="flex items-center space-x-2">
 					<svg-icon class="rounded-full p-1 text-white bg-blue-500 w-5 h-5" name="eyes"></svg-icon>
 					<span>{{ p.visitors || 0 }}</span>
 				</div>
@@ -33,7 +33,7 @@
 						@click="likeHandle($event, p)"
 					></svg-icon>
 					<span>{{ p.likes || 0 }}</span>
-				</div>
+				</div> -->
 			</div>
 			<!-- 摘要 -->
 			<p class="min-h-20 line-clamp-3 leading-7 text-[#cecece] text-sm indent-[2em]">{{ p.blogAbstract }}</p>

@@ -7,23 +7,23 @@
 			<div class="flex items-center space-x-5">
 				<img class="h-9 cursor-pointer" src="../assets/imgs/logo.png" alt="" @click="goHome" />
 
-				<div class="block lg:hidden" @click="showMask">
+				<!-- <div class="block lg:hidden" @click="showMask">
 					<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" class="h-full text-[30px]" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708M7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"
 						></path>
 					</svg>
-				</div>
-				<MyMenu :list="menuList" class="hidden lg:block" :mode="mode" />
+				</div> -->
+				<!-- <MyMenu :list="menuList" class="hidden lg:block" :mode="mode" /> -->
 				<div class="hidden xl:block">
 					<div class="text-sm h-7 flex items-center">
-						<input type="text" v-model="keywords" placeholder="文章标题关键字查询" class="bottom-0 border border-r-0 outline-none h-full text-black pl-3 rounded-sm rounded-e-none" />
+						<input type="text" v-model="title" placeholder="文章标题关键字查询" class="bottom-0 border border-r-0 outline-none h-full text-black pl-3 rounded-sm rounded-e-none" />
 						<button class="border h-full px-3 bg-white text-slate-700 hover:text-slate-800 hover:bg-slate-100 rounded-sm rounded-s-none" @click="searchHandle">搜索</button>
 					</div>
 				</div>
 			</div>
 
-			<div class="flex items-center">
+			<!-- <div class="flex items-center">
 				<div class="size-7 border rounded-full flex items-center justify-center cursor-pointer mr-5 dark:bg-slate-800 shadow-md">
 					<svg-icon :name="isTheme == 'light' ? 'sun' : 'moon'" :class="num <= 200 ? 'text-white' : 'text-black'" class="w-5 h-5 dark:text-white" @click="changeTheme"></svg-icon>
 				</div>
@@ -48,7 +48,7 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 
@@ -161,17 +161,17 @@ function getClassifyList() {
 }
 
 // 搜索框
-const keywords = ref();
+const title = ref();
 function searchHandle() {
 	if ($route.path == '/home') {
-		mitter.emit('getHomeList', keywords.value);
+		mitter.emit('getHomeList', title.value);
 	} else {
 		$router.push({
 			path: '/home',
-			query: { keywords: keywords.value }
+			query: { title: title.value }
 		});
 	}
-	keywords.value = '';
+	title.value = '';
 }
 
 // 登录与注册

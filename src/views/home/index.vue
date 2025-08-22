@@ -21,7 +21,7 @@
 					</div>
 					<div class="h-12"></div>
 					<p class="py-3 text-2xl dark:text-white">techtron</p>
-					<p class="py-3 text-zinc-500 dark:text-white">路虽远，行则将至。</p>
+					<p class="py-3 text-zinc-500 dark:text-white">Stay Hungry. Stay Follish. </p>
 					<div class="border-t border-zinc-300 dark:border-slate-800 w-full mt-8 flex flex-col items-center">
 						<div class="-mt-3 w-28 h-6 text-center dark:bg-slate-800 bg-slate-100 dark:text-white">社交账号</div>
 
@@ -40,15 +40,15 @@
 				</div>
 			</section>
 			<!-- 生活推荐 -->
-			<section class="w-full border-solid border border-zinc-300 dark:border-slate-700 dark:bg-slate-800 rounded-md mt-5 overflow-hidden text-center p-4 shadow-md cursor-pointer">
+			<!-- <section class="w-full border-solid border border-zinc-300 dark:border-slate-700 dark:bg-slate-800 rounded-md mt-5 overflow-hidden text-center p-4 shadow-md cursor-pointer">
 				<div class="py-2 border-b dark:border-b-slate-700 dark:text-white">生活推荐</div>
 				<div class="life relative flex flex-col w-full h-40 hover text-white mt-5 rounded-md overflow-hidden" v-for="(p, i) in lifeList" :key="i" @click="goLifeDetail(p)">
 					<div class="flex-1 left-0 top-0 bg-center bg-no-repeat bg-cover hover:scale-125 duration-300 overflow-hidden" :style="{ backgroundImage: `url(${p.fullUrl})` }"></div>
 					<p class="absolute left-0 bottom-0 w-full h-10 leading-10 line-clamp-1 bg-03-black">{{ p.title }}</p>
 				</div>
-			</section>
+			</section> -->
 			<!-- 我的相册 -->
-			<section class="w-full border-solid border border-zinc-300 dark:border-slate-700 dark:bg-slate-800 rounded-md mt-5 overflow-hidden p-4 shadow-md">
+			<!-- <section class="w-full border-solid border border-zinc-300 dark:border-slate-700 dark:bg-slate-800 rounded-md mt-5 overflow-hidden p-4 shadow-md">
 				<div class="py-2 border-b dark:border-b-slate-700 text-center dark:text-white">我的相册</div>
 				<div class="flex py-4 space-x-2 text-sm border-b dark:border-b-slate-700 cursor-pointer" v-for="(p, i) in albumList" :key="i" @click="goAlumbDetail(p)">
 					<div class="size-12 cursor-pointer overflow-hidden rounded-full shadow-md">
@@ -60,7 +60,7 @@
 						<text class="text-xs text-slate-400 text-left">{{ p.createTime }}</text>
 					</div>
 				</div>
-			</section>
+			</section> -->
 		</div>
 	</div>
 </template>
@@ -76,8 +76,8 @@ mitter.on('getHomeList', getHomeList);
 mitter.on('getLableList', getLableList);
 
 onMounted(() => {
-	if ($route.query.keywords) {
-		keywords.value = $route.query.keywords;
+	if ($route.query.title) {
+		title.value = $route.query.title;
 	}
 
 	if ($route.query.lableName) {
@@ -95,19 +95,19 @@ const list = ref([]);
 const total = ref(0);
 const pageNum = ref(1);
 const pageSize = ref(6);
-const keywords = ref('');
+const title = ref('');
 const lable = ref('');
 
 function cancel() {
 	pageNum.value = 1;
 	pageSize.value = 6;
-	keywords.value = '';
+	title.value = '';
 	lable.value = '';
 }
 
 function getList() {
 	let json = {
-		keywords: keywords.value,
+		title: title.value,
 		lable: lable.value,
 		type: 0, //全部
 		current: pageNum.value,
@@ -151,9 +151,9 @@ onBeforeUnmount(() => {
 	mitter.off('getLableList');
 });
 
-let bannerText = ref('');
+let bannerText = ref('书写是为了更好的思考');
 const bannerImg = ref('https://techtron-1304230447.cos.ap-shanghai.myqcloud.com/blog/banner.png');
-printText('遇事不决，可问春风。春风不语，既随本心。')
+// printText('书写是为了更好的思考')
 const settingList = () => {
 	api.settingList({ id: 1 }).then((res) => {
 		bannerImg.value = res.data.fullUrl;
@@ -192,7 +192,7 @@ function visitorAdd() {
 // 关键字查询
 function getHomeList(val) {
 	cancel();
-	keywords.value = val || '';
+	title.value = val || '';
 	getList();
 }
 // 标签查询
@@ -222,7 +222,7 @@ function changePrev() {
 const lifeList = ref([]);
 function getLifeList() {
 	let json = {
-		keywords: '',
+		title: '',
 		lable: '',
 		type: 7, //生活
 		pageNum: 1,

@@ -41,7 +41,7 @@ const router = createRouter({
 					path: '/home',
 					name: '首页',
 					meta: {
-						title: '春风不语，既随本心。'
+						title: 'techtron'
 					},
 					component: () => import('@/views/home/index.vue')
 				},

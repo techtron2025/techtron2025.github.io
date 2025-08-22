@@ -4,7 +4,7 @@
 			<ul class="left w-0 sm:w-[300px] bg-slate-100 cursor-pointer border-r border-r-slate-200 overflow-y-auto">
 				<div class="h-16 flex items-center px-2 space-x-2">
 					<img :src="userStore.userInfo.avatar" alt="" class="w-10 h-10" />
-					<input type="text" v-model="keywords" placeholder="搜索" class="w-full outline-none pl-2 h-8 text-black rounded-sm" />
+					<input type="text" v-model="title" placeholder="搜索" class="w-full outline-none pl-2 h-8 text-black rounded-sm" />
 				</div>
 
 				<li v-for="(p, i) in newUserList" :key="i" :class="i == currentUserId ? 'bg-slate-300' : 'bg-slate-100'" class="p-4 flex justify-between hover:bg-slate-200" @click="changeChat(p, i)">
@@ -157,8 +157,8 @@ const sendImg = () => {
 };
 
 // 关键字过滤用户
-const keywords = ref('');
-const newUserList = computed(() => userList.value.filter((item) => item.name?.includes(keywords.value) || item.mode == 2));
+const title = ref('');
+const newUserList = computed(() => userList.value.filter((item) => item.name?.includes(title.value) || item.mode == 2));
 
 // 切换聊天对象
 const userList = ref([]);

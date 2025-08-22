@@ -1,17 +1,17 @@
 <template>
-	<MyHeader />
+	<!-- <MyHeader /> -->
 
 	<router-view />
-	<div :class="isbigMain ? 'big-main' : 'small-main'" class="mt-4">
+	<!-- <div :class="isbigMain ? 'big-main' : 'small-main'" class="mt-4">
 		<APlayer ref="aplayerRef" />
-	</div>
+	</div> -->
 
 	<MyFooter />
 	<Loading />
 	<div class="border bg-slate-100 border-slate-300 rounded-md fixed right-5 sm:right-10 bottom-5 sm:bottom-20 z-40 flex flex-col cursor-pointer">
-		<div class="w-10 h-12 border-b border-b-slate-300 flex justify-center items-center p-1 hover:bg-slate-200" @click="webSocket">
+		<!-- <div class="w-10 h-12 border-b border-b-slate-300 flex justify-center items-center p-1 hover:bg-slate-200" @click="webSocket">
 			<svg-icon name="chat" class="w-7 h-7 text-blue-600"></svg-icon>
-		</div>
+		</div> -->
 		<div class="w-10 h-12 flex justify-center items-center p-1 hover:bg-slate-200" @click="top">
 			<svg-icon name="top" class="w-7 h-7 text-blue-600"></svg-icon>
 		</div>

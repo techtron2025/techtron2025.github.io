@@ -74,7 +74,7 @@ const pageNum = ref(1);
 const pageSize = ref(6);
 function getList() {
 	let json = {
-		keywords: '',
+		title: '',
 		lable: '',
 		type: 7, //生活
 		pageNum: pageNum.value,

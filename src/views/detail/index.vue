@@ -1,5 +1,5 @@
 <template>
-	<banner :url="info.fullUrl" v-if="info.fullUrl">
+	<banner :url="info.url" v-if="info.url">
 		<div class="baner-text">
 			<h2 class="px-5 text-base sm:text-xl md:text-2xl lg:text-3xl py-1 line-clamp-1" @click="back">{{ info.title }}</h2>
 			<div class="flex flex-wrap mt-3 md:justify-between text-xs px-7 gap-1">
@@ -8,7 +8,7 @@
 					<span>更新时间：</span>
 					<span>{{ info.updateTime }}</span>
 				</div>
-				<div class="flex items-center space-x-1">
+				<!-- <div class="flex items-center space-x-1">
 					<svg-icon class="rounded-full p-1 text-white bg-blue-500 w-4 h-4" name="eyes"></svg-icon>
 					<span>浏览量：</span>
 					<span>{{ info.visitors || 0 }}</span>
@@ -17,7 +17,7 @@
 					<svg-icon class="rounded-full p-1 bg-green-500 w-4 h-4 text-red-600" name="like"></svg-icon>
 					<span>点赞数：</span>
 					<span>{{ info.likes || 0 }}</span>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</banner>
@@ -25,9 +25,9 @@
 	<div class="small-main">
 		<v-md-editor class="dark" @copy-code-success="onCopyCode" v-model="info.content" mode="preview" @image-click="previewImgs"></v-md-editor>
 	</div>
-	<div class="small-main">
+	<!-- <div class="small-main">
 		<comment :acticleId="acticleId" :list="commentList" @answer="answer" :total="total" />
-	</div>
+	</div> -->
 
 	<el-image @mousewheel="mousewheel" ref="imgViewRef" :max-scale="1.5" :min-scale="0.5" style="width: 0" :src="srcList[0]" :preview-src-list="srcList" :initial-index="0" fit="cover" />
 </template>
@@ -46,7 +46,7 @@ onMounted(() => {
 	acticleId.value = $route.query.id;
 	
 	getDetail();
-	getCommentList();
+	// getCommentList();
 });
 
 const info = ref({});

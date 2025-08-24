@@ -171,7 +171,7 @@ function searchHandle() {
 			query: { title: title.value }
 		});
 	}
-	title.value = '';
+	// title.value = '';
 }
 
 // 登录与注册

@@ -1,5 +1,5 @@
 <template>
-	<!-- <MyHeader /> -->
+	<MyHeader />
 
 	<router-view />
 	<!-- <div :class="isbigMain ? 'big-main' : 'small-main'" class="mt-4">

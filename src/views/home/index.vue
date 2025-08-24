@@ -108,8 +108,7 @@ function cancel() {
 function getList() {
 	let json = {
 		title: title.value,
-		lable: lable.value,
-		type: 0, //全部
+		tag: lable.value,
 		current: pageNum.value,
 		pageSize: pageSize.value
 	};

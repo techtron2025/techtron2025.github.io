@@ -1,4 +1,4 @@
-name: Deploy blog-client
+name: Deploy onebook-client
 
 on:
   # Runs on pushes targeting the default branch

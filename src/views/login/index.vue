@@ -5,16 +5,16 @@
 				<h3 class="text-black text-center text-xl">用户登录</h3>
 
 				<el-form ref="formRef" :model="form" :rules="rules" size="large" class="mt-5 el-form-box" @submit.prevent="login">
-					<el-form-item prop="email">
-						<el-input v-model="form.email" placeholder="请输入您的邮箱" />
+					<el-form-item prop="userAccount">
+						<el-input v-model="form.userAccount" placeholder="请输入您的邮箱" />
 					</el-form-item>
-					<el-form-item prop="password">
-						<el-input v-model="form.password" placeholder="请输入密码" type="password" show-password maxlength="12" />
+					<el-form-item prop="userPassword">
+						<el-input v-model="form.userPassword" placeholder="请输入密码" type="userPassword" show-password maxlength="12" />
 					</el-form-item>
 					<el-form-item prop="code">
 						<el-input v-model="form.code" placeholder="请输入验证码">
 							<template #append>
-								<div v-html="svgCode" class="w-[120px] h-[40px] cursor-pointer" @click="getCode"></div>
+								<img :src="svgCode" class="w-[120px] h-[40px] cursor-pointer" @click="getCode" />
 							</template>
 						</el-input>
 					</el-form-item>
@@ -50,8 +50,8 @@ onMounted(() => {
 
 const formRef = ref(null);
 const form = reactive({
-	email: '',
-	password: '',
+	userAccount: '',
+	userPassword: '',
 	code: '',
 	captchaKey: ''
 });
@@ -60,7 +60,7 @@ const form = reactive({
 const svgCode = ref('');
 function getCode() {
 	api.getCode().then((res) => {
-		svgCode.value = res.data.svg;
+		svgCode.value = 'data:image/png;base64,' + res.data.imageBase64;
 		form.captchaKey = res.data.captchaKey;
 	});
 }
@@ -70,7 +70,7 @@ const login = () => {
 		formRef.value.validate((valid, fields) => {
 			if (valid) {
 				let json = JSON.parse(JSON.stringify(form));
-				json.password = hexMD5(json.password + config.pwd);
+				json.userPassword = hexMD5(json.userPassword + config.pwd);
 				api.login(json)
 					.then((res) => {
 						userStore.setUserInfo(res.data);
@@ -85,8 +85,8 @@ const login = () => {
 };
 
 const rules = reactive({
-	email: [{ required: true, message: '请输入您的邮箱', trigger: 'blur' }],
-	password: [
+	userAccount: [{ required: true, message: '请输入您的邮箱', trigger: 'blur' }],
+	userPassword: [
 		{ required: true, message: '请输入登录密码', trigger: 'blur' },
 		{ min: 6, max: 12, message: '请输入6-12位密码', trigger: 'blur' }
 	],

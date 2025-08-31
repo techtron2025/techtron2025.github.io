@@ -47,6 +47,9 @@ axios.interceptors.response.use(
 			case 66:
 				message = 'TOKEN过期';
 				break;
+			case 401:
+				message = '请先登录';
+				break;
 			case 403:
 				message = '无权访问';
 				break;

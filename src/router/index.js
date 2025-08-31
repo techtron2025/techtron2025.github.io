@@ -41,7 +41,7 @@ const router = createRouter({
 					path: '/home',
 					name: '首页',
 					meta: {
-						title: 'techtron'
+						title: 'onebook'
 					},
 					component: () => import('@/views/home/index.vue')
 				},

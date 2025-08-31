@@ -5,17 +5,17 @@
 				<h3 class="text-black text-center text-xl">用户注册</h3>
 
 				<el-form ref="formRef" :model="form" :rules="rules" size="large" class="mt-5 el-form-box" @submit.prevent="register">
-					<el-form-item prop="email">
-						<el-input v-model="form.email" placeholder="请输入您的邮箱" />
+					<el-form-item prop="userAccount">
+						<el-input v-model="form.userAccount" placeholder="请输入您的邮箱" />
 					</el-form-item>
-					<el-form-item prop="username">
-						<el-input v-model="form.username" placeholder="请输入您的昵称" />
+					<el-form-item prop="userName">
+						<el-input v-model="form.userName" placeholder="请输入您的昵称" />
 					</el-form-item>
-					<el-form-item prop="password">
-						<el-input v-model="form.password" placeholder="请输入密码" type="password" show-password maxlength="12" />
+					<el-form-item prop="userPassword">
+						<el-input v-model="form.userPassword" placeholder="请输入密码" type="userPassword" show-password maxlength="12" />
 					</el-form-item>
 					<el-form-item prop="restPassword">
-						<el-input v-model="form.restPassword" placeholder="请再次输入密码" type="password" show-password maxlength="12" />
+						<el-input v-model="form.restPassword" placeholder="请再次输入密码" type="userPassword" show-password maxlength="12" />
 					</el-form-item>
 					<el-form-item prop="code">
 						<el-input v-model="form.code" placeholder="请输入邮箱验证码">
@@ -50,9 +50,9 @@ const $router = useRouter();
 
 const formRef = ref(null);
 const form = reactive({
-	email: '',
-	username: '',
-	password: '',
+	userAccount: '',
+	userName: '',
+	userPassword: '',
 	restPassword: '',
 	code: '',
 	captchaKey: ''
@@ -66,10 +66,10 @@ const off = reactive({
 
 function getEmailCode(e) {
 	e.preventDefault();
-	formRef.value.validateField('email').then((valid) => {
+	formRef.value.validateField('userAccount').then((valid) => {
 		if (valid) {
-			api.getEmailCode({ email: form.email }).then((res) => {
-				form.captchaKey = res.data.captchaKey;
+			api.getEmailCode({ to: form.userAccount }).then((res) => {
+				form.captchaKey = res.data;
 				successDeal('验证码发送成功');
 				timer();
 			});
@@ -96,9 +96,9 @@ const register = () => {
 		formRef.value.validate((valid, fields) => {
 			if (valid) {
 				let json = {
-					email: form.email,
-					username: form.username,
-					password: hexMD5(form.password + config.pwd),
+					userAccount: form.userAccount,
+					userName: form.userName,
+					userPassword: hexMD5(form.userPassword + config.pwd),
 					code: form.code,
 					captchaKey: form.captchaKey
 				};
@@ -114,7 +114,7 @@ const validatePass = (rule, value, callback) => {
 	if (value === '') {
 		callback(new Error('请再次输入密码'));
 	} else {
-		if (value != form.password) {
+		if (value != form.userPassword) {
 			callback(new Error('两次密码不一致'));
 		}
 		callback();
@@ -122,7 +122,7 @@ const validatePass = (rule, value, callback) => {
 };
 
 const rules = reactive({
-	email: [
+	userAccount: [
 		{ required: true, message: '请输入您的邮箱', trigger: 'blur' },
 		{
 			pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
@@ -131,13 +131,13 @@ const rules = reactive({
 		}
 	],
 
-	password: [
+	userPassword: [
 		{ required: true, message: '请输入登录密码', trigger: 'blur' },
 		{ min: 6, max: 12, message: '请输入6-12位密码', trigger: 'blur' }
 	],
 	restPassword: [{ validator: validatePass, trigger: 'blur' }],
 	code: [{ required: true, message: '请输入邮箱验证码', trigger: 'blur' }],
-	username: [{ required: true, message: '请输入您的昵称', trigger: 'blur' }]
+	userName: [{ required: true, message: '请输入您的昵称', trigger: 'blur' }]
 });
 </script>
 

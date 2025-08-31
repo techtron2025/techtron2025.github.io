@@ -23,7 +23,7 @@
 				</div>
 			</div>
 
-			<!-- <div class="flex items-center">
+			<div class="flex items-center">
 				<div class="size-7 border rounded-full flex items-center justify-center cursor-pointer mr-5 dark:bg-slate-800 shadow-md">
 					<svg-icon :name="isTheme == 'light' ? 'sun' : 'moon'" :class="num <= 200 ? 'text-white' : 'text-black'" class="w-5 h-5 dark:text-white" @click="changeTheme"></svg-icon>
 				</div>
@@ -48,7 +48,7 @@
 						</li>
 					</ul>
 				</div>
-			</div> -->
+			</div>
 		</div>
 	</div>
 

@@ -1,3 +1,4 @@
+import router from "@/router";
 /**
  * http错误处理
  */
@@ -17,15 +18,15 @@ export const errorDeal = (error) => {
 
 	if (error.apiName) {
 		errorText = `${error.apiName || ''},${errorText}`;
-	} else if (error.code == '66') {
-		ElMessageBox.alert(error.msg, '提示', {
+	} else if (error.code == 40100) {
+		ElMessageBox.alert(error.message, '提示', {
 			confirmButtonText: '确定',
 			'show-close': false,
 			callback: (action) => {
 				removeStore('client_token');
 				removeStore('client_userInfo');
 				removeStore('client_theme');
-				window.location.href = '/login';
+				router.push('/login');
 			}
 		});
 	} else {

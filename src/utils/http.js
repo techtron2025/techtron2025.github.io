@@ -7,7 +7,7 @@ axios.interceptors.request.use(
 	function (config) {
 		globConfig.show.value = true;
 		//获取token
-		config.headers.token = getStore('client_token') || '';
+		config.headers.Authorization = getStore('client_token') || '';
 		config.baseURL = import.meta.env.VITE_URL + '/api';
 		return config;
 	},
@@ -21,8 +21,8 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
 	function (response) {
 		// 获取后台生成的token
-		if (response.headers?.token) {
-			setStore('client_token', response.headers.token);
+		if (response.headers?.get('Authorization')) {
+			setStore('client_token', response.headers.get('Authorization'));
 		}
 
 		globConfig.show.value = false;

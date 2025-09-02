@@ -7,20 +7,21 @@
 		<form @submit.prevent="submitHandle" class="bg-slate-50 dark:border-slate-700 dark:bg-slate-800 shadow-md rounded-md px-5 pb-10 pt-2 space-y-5 ">
 			<div class="flex justify-center items-center">
 				<div class="rounded-full bg-white w-[100px] h-[100px] cursor-pointer overflow-hidden shadow-md">
-					<img class="w-full h-full hover:scale-125 duration-300" :src="form.avatar" alt="" />
+					<img class="w-full h-full hover:scale-125 duration-300" src="../../assets/imgs/nv.png" alt="" />
 				</div>
 			</div>
-			<input
+			<!-- <input
 				@change="uploadChange"
 				type="file"
 				class="m-auto block cursor-pointer text-size-zero text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-100 file:text-violet-700 hover:file:bg-violet-200"
-			/>
+			/> -->
 
 			<div>
 				<div>用户姓名：</div>
 				<input
 					type="text"
-					v-model="form.username"
+					disabled
+					v-model="userStore.userInfo.userName"
 					placeholder="请输入您的姓名"
 					class="flex-1 border border-slate-300 dark:bg-slate-600 dark:text-white mt-2 h-10 w-full outline-none pl-3 rounded-sm"
 				/>
@@ -28,10 +29,10 @@
 
 			<div>
 				<div>邮箱：</div>
-				<input disabled type="text" v-model="form.email" placeholder="请输入您的邮箱" class="flex-1 border border-slate-300 dark:bg-slate-600 mt-2 h-10 w-full outline-none pl-3 rounded-sm" />
+				<input disabled type="text" v-model="userStore.userInfo.userAccount" placeholder="请输入您的邮箱" class="flex-1 border border-slate-300 dark:bg-slate-600 mt-2 h-10 w-full outline-none pl-3 rounded-sm" />
 			</div>
 
-			<div>
+			<!-- <div>
 				<div>密码：</div>
 				<input
 					type="password"
@@ -39,9 +40,9 @@
 					placeholder="请输入您的密码，不传则不修改"
 					class="flex-1 border border-slate-300 dark:bg-slate-600 mt-2 h-10 w-full outline-none pl-3 rounded-sm"
 				/>
-			</div>
+			</div> -->
 
-			<div>
+			<!-- <div>
 				<div>手机号码：</div>
 				<input type="text" v-model="form.mobile" placeholder="请输入您的手机号码" class="flex-1 border border-slate-300 dark:bg-slate-600 mt-2 h-10 w-full outline-none pl-3 rounded-sm" />
 			</div>
@@ -68,9 +69,9 @@
 			<div>
 				<div>微信号：</div>
 				<input type="text" v-model="form.weixin" placeholder="" class="flex-1 mt-2 border border-slate-300 dark:bg-slate-600 h-10 w-full outline-none pl-3 rounded-sm" />
-			</div>
+			</div> -->
 
-			<button class="btn-purple w-full h-[40px]">修 改</button>
+			<!-- <button class="btn-purple w-full h-[40px]">修 改</button> -->
 		</form>
 	</div>
 </template>
@@ -85,8 +86,8 @@ import hexMD5 from '@/utils/md5.min.js';
 import config from '@/config';
 
 onMounted(() => {
-	settingList();
-	getUserInfo();
+	// settingList();
+	// getUserInfo();
 });
 
 const form = reactive({

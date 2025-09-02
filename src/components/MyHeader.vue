@@ -3,7 +3,7 @@
 		:class="num > 200 ? 'bg-white text-black dark:bg-slate-800 dark:text-white' : 'bg-06-black text-white '"
 		class="shadow-2xl fixed left-0 right-0 top-0 bottom-0 h-16 w-full z-50 transition-all"
 	>
-		<div class="absolute px-5 left-1/2 top-0 transform -translate-x-1/2 w-full 2xl:w-[80%] h-full z-20 flex justify-between">
+		<div class="absolute px-20 left-1/2 top-0 transform -translate-x-1/2 w-full 2xl:w-[80%] h-full z-20 flex justify-between">
 			<div class="flex items-center space-x-5">
 				<img class="h-9 cursor-pointer" src="../assets/imgs/logo.png" alt="" @click="goHome" />
 
@@ -27,15 +27,15 @@
 				<div class="size-7 border rounded-full flex items-center justify-center cursor-pointer mr-5 dark:bg-slate-800 shadow-md">
 					<svg-icon :name="isTheme == 'light' ? 'sun' : 'moon'" :class="num <= 200 ? 'text-white' : 'text-black'" class="w-5 h-5 dark:text-white" @click="changeTheme"></svg-icon>
 				</div>
-				<div v-if="!userStore.userInfo.email" class="flex space-x-3">
+				<div v-if="!userStore.userInfo.userAccount" class="flex space-x-3">
 					<button class="btn-purple" @click="register">注册</button>
 					<button class="btn-green" @click="login">登录</button>
 				</div>
 
 				<div v-else class="relative group h-full flex items-center cursor-pointer">
 					<div class="flex items-center space-x-2">
-						<img :src="userStore.userInfo.avatar" alt="" class="w-8 h-8 rounded-full" />
-						<span>{{ userStore.userInfo.username }}</span>
+						<img src="../assets/imgs/nv.png" alt="" class="w-8 h-8 rounded-full" />
+						<span>{{ userStore.userInfo.userName }}</span>
 					</div>
 					<ul class="absolute hidden group-hover:block sm:-left-3 -left-14 top-14 bg-white shadow-md rounded-md w-32 overflow-hidden">
 						<li class="p-2 flex items-center space-x-2 transition-all hover:bg-slate-200" @click="command(1)">

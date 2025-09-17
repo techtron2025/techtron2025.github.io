@@ -5,11 +5,11 @@
 				<h3 class="text-black text-center text-xl">用户注册</h3>
 
 				<el-form ref="formRef" :model="form" :rules="rules" size="large" class="mt-5 el-form-box" @submit.prevent="register">
-					<el-form-item prop="userAccount">
-						<el-input v-model="form.userAccount" placeholder="请输入您的邮箱" />
+					<el-form-item prop="email">
+						<el-input v-model="form.email" placeholder="请输入您的邮箱" />
 					</el-form-item>
-					<el-form-item prop="userName">
-						<el-input v-model="form.userName" placeholder="请输入您的昵称" />
+					<el-form-item prop="nickname">
+						<el-input v-model="form.nickname" placeholder="请输入您的昵称" />
 					</el-form-item>
 					<el-form-item prop="userPassword">
 						<el-input v-model="form.userPassword" placeholder="请输入密码" type="userPassword" show-password maxlength="12" />
@@ -50,8 +50,8 @@ const $router = useRouter();
 
 const formRef = ref(null);
 const form = reactive({
-	userAccount: '',
-	userName: '',
+	email: '',
+	nickname: '',
 	userPassword: '',
 	restPassword: '',
 	code: '',
@@ -66,9 +66,9 @@ const off = reactive({
 
 function getEmailCode(e) {
 	e.preventDefault();
-	formRef.value.validateField('userAccount').then((valid) => {
+	formRef.value.validateField('email').then((valid) => {
 		if (valid) {
-			api.getEmailCode({ to: form.userAccount }).then((res) => {
+			api.getEmailCode({ email: form.email, scene: 1 }).then((res) => {
 				form.captchaKey = res.data;
 				successDeal('验证码发送成功');
 				timer();
@@ -96,9 +96,9 @@ const register = () => {
 		formRef.value.validate((valid, fields) => {
 			if (valid) {
 				let json = {
-					userAccount: form.userAccount,
-					userName: form.userName,
-					userPassword: hexMD5(form.userPassword + config.pwd),
+					email: form.email,
+					nickname: form.nickname,
+					password: form.userPassword,
 					code: form.code,
 					captchaKey: form.captchaKey
 				};
@@ -122,7 +122,7 @@ const validatePass = (rule, value, callback) => {
 };
 
 const rules = reactive({
-	userAccount: [
+	email: [
 		{ required: true, message: '请输入您的邮箱', trigger: 'blur' },
 		{
 			pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
@@ -136,8 +136,8 @@ const rules = reactive({
 		{ min: 6, max: 12, message: '请输入6-12位密码', trigger: 'blur' }
 	],
 	restPassword: [{ validator: validatePass, trigger: 'blur' }],
-	code: [{ required: true, message: '请输入邮箱验证码', trigger: 'blur' }],
-	userName: [{ required: true, message: '请输入您的昵称', trigger: 'blur' }]
+	// code: [{ required: true, message: '请输入邮箱验证码', trigger: 'blur' }],
+	nickname: [{ required: true, message: '请输入您的昵称', trigger: 'blur' }]
 });
 </script>
 

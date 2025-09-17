@@ -21,7 +21,7 @@
 					</div>
 					<div class="h-12"></div>
 					<p class="py-3 text-2xl dark:text-white">techtron</p>
-					<p class="py-3 text-zinc-500 dark:text-white">Stay Hungry. Stay Follish. </p>
+					<p class="py-3 text-zinc-500 dark:text-white">Stay Hungry. Stay Foolish. </p>
 					<div class="border-t border-zinc-300 dark:border-slate-800 w-full mt-8 flex flex-col items-center">
 						<div class="-mt-3 w-28 h-6 text-center dark:bg-slate-800 bg-slate-100 dark:text-white">社交账号</div>
 

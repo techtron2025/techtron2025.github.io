@@ -4,19 +4,12 @@
 			<div class="flex-1 py-10 px-3">
 				<h3 class="text-black text-center text-xl">用户登录</h3>
 
-				<el-form ref="formRef" :model="form" :rules="rules" size="large" class="mt-5 el-form-box" @submit.prevent="login">
+				<el-form ref="formRef" :model="form" :rules="rules" size="large" class="mt-5 el-form-box" @submit.prevent="getCode">
 					<el-form-item prop="userAccount">
 						<el-input v-model="form.userAccount" placeholder="请输入您的邮箱" />
 					</el-form-item>
 					<el-form-item prop="userPassword">
 						<el-input v-model="form.userPassword" placeholder="请输入密码" type="userPassword" show-password maxlength="12" />
-					</el-form-item>
-					<el-form-item prop="code">
-						<el-input v-model="form.code" placeholder="请输入验证码">
-							<template #append>
-								<img :src="svgCode" class="w-[120px] h-[40px] cursor-pointer" @click="getCode" />
-							</template>
-						</el-input>
 					</el-form-item>
 					<button type="submit" class="btn-green w-full h-10">登 录</button>
 				</el-form>
@@ -30,6 +23,13 @@
 			</div>
 			<div class="right rounded-r-md flex-1 hidden md:block"></div>
 		</div>
+		<Verify
+			ref="verify"
+			:captchaType="captchaType"
+			:imgSize="{ width: '400px', height: '200px' }"
+			mode="pop"
+			@success="login"
+		/>
 	</div>
 </template>
 
@@ -38,15 +38,15 @@ import { successDeal } from '@/utils/utils';
 import hexMD5 from '@/utils/md5.min.js';
 import config from '@/config';
 import { useUserStore } from '@/stores';
+import Verify from '@/components/Verifition/Verify.vue';
 const userStore = useUserStore();
 
 import api from './api';
 
 const $router = useRouter();
 
-onMounted(() => {
-	getCode();
-});
+const verify = ref()
+const captchaType = ref('blockPuzzle') // blockPuzzle 滑块 clickWord 点击文字 pictureWord 文字验证码
 
 const formRef = ref(null);
 const form = reactive({
@@ -56,13 +56,9 @@ const form = reactive({
 	captchaKey: ''
 });
 
-// 获取验证码
-const svgCode = ref('');
+
 function getCode() {
-	api.getCode().then((res) => {
-		svgCode.value = 'data:image/png;base64,' + res.data.imageBase64;
-		form.captchaKey = res.data.captchaKey;
-	});
+	verify.value.show()
 }
 
 const login = () => {
@@ -70,7 +66,6 @@ const login = () => {
 		formRef.value.validate((valid, fields) => {
 			if (valid) {
 				let json = JSON.parse(JSON.stringify(form));
-				json.userPassword = hexMD5(json.userPassword + config.pwd);
 				api.login(json)
 					.then((res) => {
 						userStore.setUserInfo(res.data);

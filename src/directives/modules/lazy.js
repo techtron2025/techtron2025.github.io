@@ -27,8 +27,7 @@ const observerImg = new IntersectionObserver((arr) => {
 			const _target = item.target;
 			//     设置图片的模糊度
 			_target.style.filter = 'blur(5px)';
-			const url = item.target.getAttribute('data-url');
-			_target.src = new URL(url, import.meta.url).href
+			_target.src = item.target.getAttribute('data-url');
 			//加载完毕后，恢复模糊度
 			_target.onload = () => {
 				_target.style.opacity = '1';
@@ -52,12 +51,10 @@ const observerBg = new IntersectionObserver((arr) => {
 			// 图片标签
 			const _target = item.target;
 			_target.style.filter = 'blur(5px)';
-			const url = item.target.getAttribute('data-url');
-			const imgUrl = new URL(url, import.meta.url).href
-			_target.style.backgroundImage = `url(${imgUrl})`;
+			_target.style.backgroundImage = `url(${item.target.getAttribute('data-url')})`;
 
 			let img = new Image();
-			img.src = imgUrl;
+			img.src = item.target.getAttribute('data-url');
 			img.onload = () => {
 				_target.style.filter = 'blur(0px)';
 			};

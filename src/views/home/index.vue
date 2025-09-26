@@ -1,5 +1,5 @@
 <template>
-	<banner url="../../assets/imgs/colorful_8.jpg">
+	<banner url="https://techtron-1304230447.cos.ap-shanghai.myqcloud.com/system/colorful_8.jpg">
 		<div class="baner-text">{{ bannerText }}</div>
 	</banner>
 	<div class="big-main flex">

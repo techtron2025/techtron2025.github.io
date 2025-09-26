@@ -7,8 +7,8 @@ axios.interceptors.request.use(
 	function (config) {
 		globConfig.show.value = true;
 		//获取token
-		config.headers.Authorization = getStore('client_token') || '';
-		config.baseURL = import.meta.env.VITE_URL;
+		// config.headers.Authorization = 'Bearer ' + getStore('client_token');
+		config.baseURL = import.meta.env.VITE_URL + '/api';
 		return config;
 	},
 	function (error) {
@@ -20,10 +20,6 @@ axios.interceptors.request.use(
 //响应拦截器
 axios.interceptors.response.use(
 	function (response) {
-		// 获取后台生成的token
-		if (response.headers?.get('Authorization')) {
-			setStore('client_token', response.headers.get('Authorization'));
-		}
 
 		globConfig.show.value = false;
 		if (response.request?.responseType == 'blob') {

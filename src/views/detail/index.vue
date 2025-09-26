@@ -1,5 +1,5 @@
 <template>
-	<banner url="https://techtron-1304230447.cos.ap-shanghai.myqcloud.com/blog/banner.png">
+	<banner url="../../assets/imgs/colorful_8.jpg">
 		<div class="baner-text">
 			<h2 class="px-5 text-base sm:text-xl md:text-2xl lg:text-3xl py-1 line-clamp-1" @click="back">{{ info.title }}</h2>
 			<div class="flex flex-wrap mt-3 md:justify-between text-xs px-7 gap-1">

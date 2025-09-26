@@ -1,8 +1,7 @@
 <template>
-	<banner :url="bannerImg" v-if="bannerImg">
+	<banner url="../../assets/imgs/colorful_8.jpg">
 		<div class="baner-text">{{ bannerText }}</div>
 	</banner>
-	<div class="h-[500px]" v-else></div>
 	<div class="big-main flex">
 		<div class="flex-1">
 			<Article :list="list" @updateList="updateList" />

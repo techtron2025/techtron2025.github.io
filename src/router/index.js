@@ -41,7 +41,7 @@ const router = createRouter({
 					path: '/home',
 					name: '首页',
 					meta: {
-						title: 'onebook'
+						title: 'Onebook'
 					},
 					component: () => import('@/views/home/index.vue')
 				},

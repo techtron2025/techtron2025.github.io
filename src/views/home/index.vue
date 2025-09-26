@@ -19,8 +19,8 @@
 						<img src="../../assets/imgs/avatar.jpg" class="hover:scale-125 duration-300" />
 					</div>
 					<div class="h-12"></div>
-					<p class="py-3 text-2xl dark:text-white">techtron</p>
-					<p class="py-3 text-zinc-500 dark:text-white">Stay Hungry. Stay Foolish. </p>
+					<p class="py-3 text-2xl dark:text-white">Techtron</p>
+					<p class="py-3 text-zinc-500 dark:text-white">Never lose your passion.</p>
 					<div class="border-t border-zinc-300 dark:border-slate-800 w-full mt-8 flex flex-col items-center">
 						<div class="-mt-3 w-28 h-6 text-center dark:bg-slate-800 bg-slate-100 dark:text-white">社交账号</div>
 
@@ -149,7 +149,7 @@ onBeforeUnmount(() => {
 	mitter.off('getLableList');
 });
 
-let bannerText = ref('书写是为了更好的思考');
+let bannerText = ref('写作是为了更好的思考');
 const bannerImg = ref('https://techtron-1304230447.cos.ap-shanghai.myqcloud.com/blog/banner.png');
 // printText('书写是为了更好的思考')
 const settingList = () => {

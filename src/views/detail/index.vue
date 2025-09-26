@@ -1,5 +1,5 @@
 <template>
-	<banner :url="info.url" v-if="info.url">
+	<banner url="https://techtron-1304230447.cos.ap-shanghai.myqcloud.com/blog/banner.png">
 		<div class="baner-text">
 			<h2 class="px-5 text-base sm:text-xl md:text-2xl lg:text-3xl py-1 line-clamp-1" @click="back">{{ info.title }}</h2>
 			<div class="flex flex-wrap mt-3 md:justify-between text-xs px-7 gap-1">
@@ -21,7 +21,6 @@
 			</div>
 		</div>
 	</banner>
-      <div class="h-[400px]" v-else></div>
 	<div class="small-main">
 		<v-md-editor class="dark" @copy-code-success="onCopyCode" v-model="info.content" mode="preview" @image-click="previewImgs"></v-md-editor>
 	</div>
